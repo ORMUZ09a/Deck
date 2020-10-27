@@ -1,47 +1,62 @@
 package com.ORMUZ09a.Tecmilenio;
 
 
-import java.util.Random;
+import java.util.*;
+
 
 public class Deck {
-    private Card cards[];
-    private int sigCarta;
+    private final ArrayList<Card> _deck = new ArrayList<>(53);
 
-    public static final int Num_cards= 52;
-    private Object Random;
+    public Deck() { init();}
 
-    public Deck() {
-        this.cards=new Card[Num_cards];
-        this.sigCarta=0;
+    public void shuffle(){ Collections.shuffle(_deck); }
 
+    public Card head()throws Exception { return _deck.remove(0);
+        if (_deck.size() < 1)
+            throw  new Exception("No hay suficientes cartas");
+
+        return Card;
     }
 
-    private void createDeck() {
-        String[] palos = Card.PALOS;
+    public Card pick() throws Exception { return _deck.remove(getRandomIndex());
+        if (_deck.size() < 1)
+            throw  new Exception("No hay suficientes cartas");
 
-        for (int i = 0; i < palos.length; i++) {
-            for (int j=0;j < Card.Limte_Carta_Palo; j++){
+        return Card;
+    }
 
+    public ArrayList<Card> hand() throws Exception {
+        ArrayList<Card> _hand =new ArrayList<>();
+        _hand.add(head());
+        _hand.add(head());
+        _hand.add(head());
+        _hand.add(head());
+        _hand.add(head());
+
+        if (_deck.size() < 5)
+            throw  new Exception("No hay suficientes cartas");
+
+        return _hand;
+    }
+
+    public int size() {return _deck.size();}
+
+    public void init() {
+        if (!_deck.isEmpty()) return;
+
+        for (Map.Entry<String, String> TYPE_COLOR : Card.TYPE_COLOR_MAP.entrySet()) {
+            String type = TYPE_COLOR.getKey();
+            String color = TYPE_COLOR.getValue();
+            for (String value : Card.VALUES){
+                _deck.add(new Card(type, color, value));
             }
         }
     }
-    public void shuffle() {
-        int Randomposicion=0;
-        Card c;
-        var Ran= new Random();
-        for (int i=0; i<cards.length; i++) {
 
-            Randomposicion = Ran.nextInt(Num_cards-1);
-
-            c= cards[i];
-            cards[i] =cards[Randomposicion];
-            cards[Randomposicion]=c;
-
-        }
-        System.out.println("Se mezclo el deck ");
-
+    public int getRandomIndex(){
+        int min = 0;
+        int max = _deck.size() - 1;
+        return (int) (Math.random() * (max - min) +min);
     }
-
-    
-
 }
+
