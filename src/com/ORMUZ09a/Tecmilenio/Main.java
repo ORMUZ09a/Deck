@@ -43,6 +43,7 @@ public class Main {
                             dk.hand();
                             System.out.println(card);
                             System.out.printf("%d cartas quedan \n%n", dk.size());
+                            break;
                         case 0:
                             salir = true;
                             break;

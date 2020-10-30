@@ -33,7 +33,7 @@ public class Deck {
         _hand.add(head());
         _hand.add(head());
 
-        if (_deck.size() < 5)
+        if (_deck.size() < 4)
             throw  new Exception("No hay suficientes cartas");
 
         return _hand;
