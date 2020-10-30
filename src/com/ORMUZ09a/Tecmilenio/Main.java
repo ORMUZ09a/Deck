@@ -5,8 +5,10 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Deck dk = new Deck();
+        String value = new String(), type = new String(), color = new String();
+        Card card= new Card(type, color, value);
         Scanner sn = new Scanner(System.in);
             boolean salir = false;
             int opcion;
@@ -27,15 +29,20 @@ public class Main {
                     switch (opcion) {
                         case 1:
                             dk.shuffle();
+                            System.out.println("Se mezclo exitosamente el mazo de cartas. \n");
                             break;
                         case 2:
                             dk.head();
+                            System.out.printf("%s\n%d cartas quedan\n%n", card, dk.size());
                             break;
                         case 3:
                             dk.pick();
+                            System.out.printf("%s\n%d cartas quedan\n %n", card, dk.size());
                             break;
                         case 4:
                             dk.hand();
+                            System.out.println(card);
+                            System.out.printf("%d cartas quedan \n%n", dk.size());
                         case 0:
                             salir = true;
                             break;

@@ -11,18 +11,18 @@ public class Deck {
 
     public void shuffle(){ Collections.shuffle(_deck); }
 
-    public Card head()throws Exception { return _deck.remove(0);
+    public Card head()throws Exception {
         if (_deck.size() < 1)
-            throw  new Exception("No hay suficientes cartas");
+            throw new Exception("No hay suficientes cartas");
 
-        return Card;
+        return _deck.remove(0);
     }
 
-    public Card pick() throws Exception { return _deck.remove(getRandomIndex());
+    public Card pick() throws Exception {
         if (_deck.size() < 1)
-            throw  new Exception("No hay suficientes cartas");
+            throw new Exception("No hay suficientes cartas");
 
-        return Card;
+        return _deck.remove(getRandomIndex());
     }
 
     public ArrayList<Card> hand() throws Exception {

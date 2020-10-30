@@ -18,14 +18,14 @@ public class Card {
             "A", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2"
     };
 
-    private final String type;
+    private final String type ;
     private final String color;
     private final String value;
 
     public Card(String type, String color, String value) {
         this.type = type;
-        this.value = value;
         this.color = color;
+        this.value = value;
 
     }
 
